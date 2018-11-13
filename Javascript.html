@@ -1,0 +1,142 @@
+<html>
+	<body>
+	<head>
+	
+	
+
+	
+<style>
+body {
+
+font-family : "Comic Sans MS", cursive, sans-serif;
+
+}
+
+.position {
+
+position: relative;
+left: 30px;
+font-size: 20px;
+
+}
+#box {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	display: none;
+	position: relative;
+	}
+#wow {
+
+color: red;
+font-weight: bold;
+font-size: 60px;
+
+}
+	
+</style>
+
+<h1 class="position"> Let's test your reaction time!</h1>
+
+<p class="position"> Try to click the figures as soon as it appears 
+and as fast as you can in less than 0.7 seconds!</p>
+<p class="position"> Your reaction time is .. <span id="ha">0 </span> Seconds </p>
+
+<div id="box">
+</div>
+
+<p id="wow"></p>
+	
+	
+<script type="text/javascript">
+
+var creatTime; var	clickTime; var reactionTime;
+	function creatBox() {
+
+		var time; 
+		time = Math.random();
+		time= time*3000;
+		
+	setTimeout ( function() {
+	
+	
+	function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+	
+	
+		if (Math.random() > 0.5) {
+		document.getElementById("box").style.borderRadius = "50px";
+		}	else {
+			document.getElementById("box").style.borderRadius = "0px";
+		}
+	
+	document.getElementById("box").style.display = "block";
+	document.getElementById("box").style.backgroundColor = getRandomColor();
+	
+	var left; left=Math.random(); left= left*400;
+	var top; top=Math.random(); top= top*200;
+	
+	document.getElementById("box").style.left = left + "px";
+	document.getElementById("box").style.top = top + "px";
+	creatTime = Date.now();
+	
+	}, time );
+	
+		document.getElementById("box").onclick = function() {
+	
+	
+		document.getElementById("box").style.display = "none";
+	
+		
+		clickTime = Date.now();
+		
+		 reactionTime= (clickTime-creatTime)/1000;
+		 
+		document.getElementById("ha").innerHTML= reactionTime;
+	
+	if (reactionTime<0.7){
+	
+	
+	alert("THAT WAS A GOOD AND FAST HIT!!!");
+	
+	
+	} else {
+	
+	document.getElementById("wow").innerHTML = "Try to hit it faster";
+	}
+	
+	if (reactionTime<0.8){
+	
+	
+	document.getElementById("wow").innerHTML = "ALMOST THERE";
+	
+	
+	} else {
+	
+	document.getElementById("wow").innerHTML = "try to hit it faster";
+	}
+	
+	creatBox();
+	}
+	
+}
+
+creatBox();
+
+
+
+	
+</script>
+	
+	
+	
+	</head>
+	</body>
+</html>
