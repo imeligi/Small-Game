@@ -1,2 +1,1 @@
-# small-game
-a small game using javaScript
+This is a Small game to test your reaction using HTML, CSS, and javaScript.
